@@ -55,11 +55,19 @@ const promptTimer = setTimeout(() => {
     
     console.log(correctNumbers);
 
-    resultsContainer.innerHTML = `
+    if(correctNumbers.length == generatedNumbers.length) {
+        resultsContainer.innerHTML = `
     <div class="result">
-        Complimenti, i numeri che hai indovinato sono: ${correctNumbers};
+        Complimenti, hai vinto!
     </div>
     `
+    } else {
+        resultsContainer.innerHTML = `
+    <div class="result">
+        I numeri che hai indovinato sono: ${correctNumbers}
+    </div>
+    `
+    }
 
 }, 3100);
 
