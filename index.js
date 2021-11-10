@@ -16,10 +16,12 @@ const generatedNumbers = [];
 console.log(generatedNumbers);
 
 const inputNumbers = [];
-console.log(inputNumbers);
+
+for(let i = 0; i < 5; i++) {
+    generatedNumbers.push(getRandomNumber(1, 99));
+}
 
 numbersContainer.innerHTML = generatedNumbers;
-console.log(numbersContainer);
 
 const timer = setTimeout(() => {
     
@@ -29,23 +31,35 @@ const timer = setTimeout(() => {
 
 const promptTimer = setTimeout(() => {
     
-    let userPrompt = parseInt(prompt('Inserire i numeri comparsi a schermo'));
-    console.log(userPrompt);
+    for(i = 1; i < 6; i++){
 
-    inputNumbers.push(userPrompt);
+        const userPrompt = parseInt(prompt(`Inserire il ${i}° numero comparso`));
+        console.log(userPrompt);
+
+        inputNumbers.push(userPrompt);
+    }
+
+    console.log(inputNumbers);
 
 }, 3100);
 
-for(let i = 0; i < 5; i++) {
-    generatedNumbers.push(getRandomNumber(1, 99, 1));
-}
+const correctNumbers = inputNumbers.filter(([i]) => {
+    if(i == generatedNumbers) {
+        return true;
+    }
+
+    return false;
+
+});
+
+console.log(correctNumbers);
 
 
 /**
- * Generate random numbers
+ * Generate unique random numbers
  */
 
- function getRandomNumber(min, max, length) {
+ function getRandomNumber(min, max) {
 
     let numbers = '';
 
