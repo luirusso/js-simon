@@ -11,6 +11,8 @@ Consigli del giorno:
 
 let numbersContainer = document.querySelector('.numbers-container');
 
+let resultsContainer = document.querySelector('.result-container');
+
 const generatedNumbers = [];
 
 console.log(generatedNumbers);
@@ -31,28 +33,37 @@ const timer = setTimeout(() => {
 
 const promptTimer = setTimeout(() => {
     
-    for(i = 1; i < 6; i++){
+    for(i = 0; i < generatedNumbers.length; i++){
 
-        const userPrompt = parseInt(prompt(`Inserire il ${i}° numero comparso`));
-        console.log(userPrompt);
+        const userPrompt = parseInt(prompt(`Inserire il ${i + 1}° numero comparso`));
+        // console.log(userPrompt);
 
         inputNumbers.push(userPrompt);
     }
 
     console.log(inputNumbers);
 
+    let correctNumbers = generatedNumbers.filter((numero) => {
+    
+        if(inputNumbers.includes(numero)) {
+            
+            return true;
+    
+        }
+    
+    });
+    
+    console.log(correctNumbers);
+
+    resultsContainer.innerHTML = `
+    <div class="result">
+        Complimenti, i numeri che hai indovinato sono: ${correctNumbers};
+    </div>
+    `
+
 }, 3100);
 
-const correctNumbers = inputNumbers.filter(([i]) => {
-    if(i == generatedNumbers) {
-        return true;
-    }
 
-    return false;
-
-});
-
-console.log(correctNumbers);
 
 
 /**
@@ -61,7 +72,7 @@ console.log(correctNumbers);
 
  function getRandomNumber(min, max) {
 
-    let numbers = '';
+    let numbers = 0;
 
     do {
         numbers += (Math.floor(Math.random() * max) + min);
