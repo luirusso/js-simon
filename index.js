@@ -11,13 +11,34 @@ Consigli del giorno:
 
 let numbersContainer = document.querySelector('.numbers-container');
 
-numbersContainer.innerHTML = getRandomNumber(1, 9, 5);
+const generatedNumbers = [];
+
+console.log(generatedNumbers);
+
+const inputNumbers = [];
+console.log(inputNumbers);
+
+numbersContainer.innerHTML = generatedNumbers;
+console.log(numbersContainer);
 
 const timer = setTimeout(() => {
     
     numbersContainer.innerHTML = '';
 
-}, 30000);
+}, 3000);
+
+const promptTimer = setTimeout(() => {
+    
+    let userPrompt = parseInt(prompt('Inserire i numeri comparsi a schermo'));
+    console.log(userPrompt);
+
+    inputNumbers.push(userPrompt);
+
+}, 3100);
+
+for(let i = 0; i < 5; i++) {
+    generatedNumbers.push(getRandomNumber(1, 99, 1));
+}
 
 
 /**
@@ -28,11 +49,9 @@ const timer = setTimeout(() => {
 
     let numbers = '';
 
-    for (let i = 0; i < length; i++) {
-
+    do {
         numbers += (Math.floor(Math.random() * max) + min);
-
-    }
+    } while (numbers != numbers);
 
     return numbers;
 };
