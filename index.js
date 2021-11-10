@@ -9,7 +9,15 @@ Consigli del giorno:
 * Individuate gli elementi di cui avete bisogno per realizzare il programma.
  */
 
+let numbersContainer = document.querySelector('.numbers-container');
 
+numbersContainer.innerHTML = getRandomNumber(1, 9, 5);
+
+const timer = setTimeout(() => {
+    
+    numbersContainer.innerHTML = '';
+
+}, 30000);
 
 
 /**
